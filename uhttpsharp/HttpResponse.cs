@@ -159,6 +159,7 @@ namespace uhttpsharp {
 
         public async Task WriteBody(StreamWriter writer) {
             ContentStream.Position = 0;
+            await writer.FlushAsync().ConfigureAwait( false );
             await ContentStream.CopyToAsync(writer.BaseStream).ConfigureAwait(false);
         }
 
